@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Meu Site</title>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+
+<body style="font-family: Arial; text-align: center; margin-top: 50px;">
+
+<h2>Formulário simples</h2>
+
+<form onsubmit="return verificar()">
+
+  <input type="text" placeholder="Seu nome" required><br><br>
+
+  <div class="g-recaptcha" data-sitekey="6Le-x8IsAAAAAD5whqFNwn2Q2XfByN9UUf4WvAQx"></div><br>
+
+  <button type="submit">Enviar</button>
+
+</form>
+
+<p id="msg"></p>
+
+<script>
+function verificar() {
+  var response = grecaptcha.getResponse();
+
+  if(response.length == 0) {
+    document.getElementById("msg").innerText = "Confirme o reCAPTCHA!";
+    return false;
+  } else {
+    document.getElementById("msg").innerText = "Enviado!";
+    return false;
+  }
+}
+</script>
+
+</body>
+</html>
